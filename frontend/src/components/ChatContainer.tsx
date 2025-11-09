@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { ChatMessage, Message } from './ChatMessage'
 import { MessageInput } from './MessageInput'
+import { apiClient, ApiError } from '../services/apiClient'
 import styles from './ChatContainer.module.css'
 
 export function ChatContainer() {
@@ -17,7 +18,7 @@ export function ChatContainer() {
     scrollToBottom()
   }, [messages])
 
-  const handleSendMessage = (content: string) => {
+  const handleSendMessage = async (content: string) => {
     // Clear any previous errors
     setError(null)
 
@@ -30,20 +31,42 @@ export function ChatContainer() {
     }
     setMessages((prev) => [...prev, userMessage])
 
-    // Simulate loading state (will be replaced with real API call in Sprint 3)
+    // Call API to get LLM response
     setIsLoading(true)
 
-    // Simulate assistant response
-    setTimeout(() => {
+    try {
+      const response = await apiClient.sendMessage({ message: content })
+
+      // Add assistant response
       const assistantMessage: Message = {
         id: `assistant-${Date.now()}`,
         role: 'assistant',
-        content: 'This is a simulated response. API integration coming in Sprint 3!',
-        timestamp: new Date(),
+        content: response.response,
+        timestamp: new Date(response.timestamp),
       }
       setMessages((prev) => [...prev, assistantMessage])
+    } catch (err) {
+      // Handle API errors
+      let errorMessage = 'An unexpected error occurred'
+
+      if (err instanceof ApiError) {
+        if (err.statusCode === 503) {
+          errorMessage = 'LLM service is currently unavailable. Please try again later.'
+        } else if (err.statusCode === 408) {
+          errorMessage = 'Request timed out. Please try again.'
+        } else if (err.statusCode === 422) {
+          errorMessage = 'Invalid message. Please check your input.'
+        } else {
+          errorMessage = err.detail || err.message
+        }
+      } else if (err instanceof Error) {
+        errorMessage = err.message
+      }
+
+      setError(errorMessage)
+    } finally {
       setIsLoading(false)
-    }, 1500)
+    }
   }
 
   return (

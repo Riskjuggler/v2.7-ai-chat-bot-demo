@@ -2,14 +2,27 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor, fireEvent, act } from '@testing-library/react'
 import { ChatContainer } from '../ChatContainer'
 
+// Mock the API client
+vi.mock('../../services/apiClient', () => ({
+  apiClient: {
+    sendMessage: vi.fn(),
+  },
+  ApiError: class ApiError extends Error {
+    constructor(message: string, public statusCode?: number, public detail?: string) {
+      super(message)
+      this.name = 'ApiError'
+    }
+  },
+}))
+
 describe('ChatContainer', () => {
   beforeEach(() => {
-    vi.useFakeTimers()
+    // Reset mocks before each test
+    vi.clearAllMocks()
   })
 
   afterEach(() => {
-    vi.clearAllTimers()
-    vi.useRealTimers()
+    vi.clearAllMocks()
   })
 
   it('renders empty state when no messages', () => {
@@ -64,6 +77,15 @@ describe('ChatContainer', () => {
   })
 
   it('shows assistant response after loading completes', async () => {
+    const { apiClient } = await import('../../services/apiClient')
+
+    // Mock successful API response
+    ;(apiClient.sendMessage as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      response: 'This is the API response',
+      model: 'test-model',
+      timestamp: new Date().toISOString(),
+    })
+
     render(<ChatContainer />)
 
     const textarea = screen.getByLabelText('Message input')
@@ -72,12 +94,10 @@ describe('ChatContainer', () => {
     fireEvent.change(textarea, { target: { value: 'Hello' } })
     fireEvent.click(sendButton)
 
-    // Fast-forward time to simulate response
-    await act(async () => {
-      vi.advanceTimersByTime(1500)
+    // Wait for API response
+    await waitFor(() => {
+      expect(screen.getByText('This is the API response')).toBeInTheDocument()
     })
-
-    expect(screen.getByText('This is a simulated response. API integration coming in Sprint 3!')).toBeInTheDocument()
   })
 
   it('clears input after sending', () => {
@@ -93,6 +113,21 @@ describe('ChatContainer', () => {
   })
 
   it('displays multiple messages in order', async () => {
+    const { apiClient } = await import('../../services/apiClient')
+
+    // Mock successful API responses
+    ;(apiClient.sendMessage as ReturnType<typeof vi.fn>)
+      .mockResolvedValueOnce({
+        response: 'First response',
+        model: 'test-model',
+        timestamp: new Date().toISOString(),
+      })
+      .mockResolvedValueOnce({
+        response: 'Second response',
+        model: 'test-model',
+        timestamp: new Date().toISOString(),
+      })
+
     render(<ChatContainer />)
 
     const textarea = screen.getByLabelText('Message input')
@@ -102,11 +137,9 @@ describe('ChatContainer', () => {
     fireEvent.change(textarea, { target: { value: 'First message' } })
     fireEvent.click(sendButton)
 
-    await act(async () => {
-      vi.advanceTimersByTime(1500)
+    await waitFor(() => {
+      expect(screen.getByText('First message')).toBeInTheDocument()
     })
-
-    expect(screen.getByText('First message')).toBeInTheDocument()
 
     // Send second message
     fireEvent.change(textarea, { target: { value: 'Second message' } })
@@ -131,6 +164,15 @@ describe('ChatContainer', () => {
   })
 
   it('enables input after loading completes', async () => {
+    const { apiClient } = await import('../../services/apiClient')
+
+    // Mock successful API response
+    ;(apiClient.sendMessage as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      response: 'Response',
+      model: 'test-model',
+      timestamp: new Date().toISOString(),
+    })
+
     render(<ChatContainer />)
 
     const textarea = screen.getByLabelText('Message input')
@@ -141,11 +183,9 @@ describe('ChatContainer', () => {
 
     expect(textarea).toBeDisabled()
 
-    await act(async () => {
-      vi.advanceTimersByTime(1500)
+    await waitFor(() => {
+      expect(textarea).not.toBeDisabled()
     })
-
-    expect(textarea).not.toBeDisabled()
   })
 
   it('renders messages area with correct role', () => {
@@ -156,6 +196,15 @@ describe('ChatContainer', () => {
   })
 
   it('shows Assistant label for assistant messages', async () => {
+    const { apiClient } = await import('../../services/apiClient')
+
+    // Mock successful API response
+    ;(apiClient.sendMessage as ReturnType<typeof vi.fn>).mockResolvedValueOnce({
+      response: 'Assistant response',
+      model: 'test-model',
+      timestamp: new Date().toISOString(),
+    })
+
     render(<ChatContainer />)
 
     const textarea = screen.getByLabelText('Message input')
@@ -164,12 +213,10 @@ describe('ChatContainer', () => {
     fireEvent.change(textarea, { target: { value: 'Test' } })
     fireEvent.click(sendButton)
 
-    await act(async () => {
-      vi.advanceTimersByTime(1500)
+    await waitFor(() => {
+      const assistantLabels = screen.getAllByText('Assistant')
+      expect(assistantLabels.length).toBeGreaterThan(0)
     })
-
-    const assistantLabels = screen.getAllByText('Assistant')
-    expect(assistantLabels.length).toBeGreaterThan(0)
   })
 
   it('clears error when new message sent', () => {
