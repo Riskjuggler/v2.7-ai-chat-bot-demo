@@ -9,10 +9,11 @@
 
 ## Overview
 
-**Total Duration**: 5-7 days (43-55 hours)
+**Total Duration**: 5.5-7 days (44-56 hours)
 **Sprint Count**: 4 sprints
 **Parallelization Strategy**: Maximize concurrent work streams
 **Team Size**: 1-2 developers
+**Quality**: 100% test coverage, zero P0/P1 issues
 **Note**: Product vision available at `.claude/planning/PRODUCT-VISION.md`
 
 ---
@@ -114,9 +115,9 @@
 | S2.A6 | Implement error handling | Dev 1 | 1 hr | S2.A4 | Pending |
 | S2.A7 | Add localhost-only security | Dev 1 | 30 min | S2.A4 | Pending |
 | S2.A8 | Test with LM Studio manually | Dev 1 | 30 min | S2.A4 | Pending |
-| S2.A9 | Write API tests (unit + integration, >80% coverage) | Dev 1 | 2-3 hrs | S2.A4-A8 | Pending |
+| S2.A9 | Write API tests (unit + integration, 100% coverage) | Dev 1 | 3-4 hrs | S2.A4-A8 | Pending |
 
-**Stream A Total**: 7-10 hours
+**Stream A Total**: 8-11 hours
 
 ### Parallel Work Stream B: Frontend Components
 
@@ -129,15 +130,15 @@
 | S2.B5 | Add loading states | Dev 2 | 30 min | S2.B4 | Pending |
 | S2.B6 | Add error display | Dev 2 | 30 min | S2.B4 | Pending |
 | S2.B7 | Style components (CSS/Tailwind) | Dev 2 | 1-2 hrs | S2.B4 | Pending |
-| S2.B8 | Write component tests (>80% coverage) | Dev 2 | 4-6 hrs | S2.B2-B7 | Pending |
+| S2.B8 | Write component tests (100% coverage) | Dev 2 | 5-7 hrs | S2.B2-B7 | Pending |
 
-**Stream B Total**: 9-13 hours
+**Stream B Total**: 10-14 hours
 
 ### Sprint 2 Summary
 
-**Critical Path**: Stream B (Frontend) - 9-13 hours
+**Critical Path**: Stream B (Frontend) - 10-14 hours
 **Parallel Execution**: Full parallelization possible
-**Sprint Duration**: 9-13 hours with 2 devs, 16-23 hours with 1 dev
+**Sprint Duration**: 10-14 hours with 2 devs, 18-25 hours with 1 dev
 
 **Deliverables**:
 - ✅ Working API endpoint that calls llm_caller_cli
@@ -147,7 +148,8 @@
 **Sprint Review Criteria**:
 - API returns LLM responses (tested with mock and LM Studio)
 - Components render correctly
-- All tests pass with >80% coverage
+- All tests pass with 100% coverage
+- Zero P0/P1 issues in sprint deliverables
 - Manual LM Studio test successful
 
 ---
@@ -253,7 +255,8 @@
 
 **Sprint Review Criteria**:
 - README allows new user to get running <5 minutes
-- All tests pass with >80% coverage
+- All tests pass with 100% coverage
+- Zero P0/P1 issues in final deliverable
 - Code is clean and maintainable
 
 ---
@@ -266,11 +269,11 @@
 |--------|----------|------------|---------------|
 | Sprint 0 | 1 hour | 1 hour | Environment ready |
 | Sprint 1 | 14-17 hours | 15-18 hours | Module integrated, React scaffolded |
-| Sprint 2 | 9-13 hours | 24-31 hours | API + Components complete |
-| Sprint 3 | 6-8 hours | 30-39 hours | End-to-end working |
-| Sprint 4 | 2-4 hours | 32-43 hours | Documented and delivered |
+| Sprint 2 | 10-14 hours | 25-32 hours | API + Components complete |
+| Sprint 3 | 6-8 hours | 31-40 hours | End-to-end working |
+| Sprint 4 | 2-4 hours | 33-44 hours | Documented and delivered |
 
-**Total**: 32-43 hours across 4-5 days
+**Total**: 33-44 hours across 4.5-5.5 days
 
 ### With 1 Developer (Sequential Execution)
 
@@ -278,11 +281,11 @@
 |--------|----------|------------|-------|
 | Sprint 0 | 1 hour | 1 hour | - |
 | Sprint 1 | 16-20 hours | 17-21 hours | Stream A first (14-17h), then B+C (2.5-3h) |
-| Sprint 2 | 16-23 hours | 33-44 hours | Stream A first (7-10h), then B (9-13h) |
-| Sprint 3 | 11-15 hours | 44-59 hours | Partial parallelization loss |
-| Sprint 4 | 4-6 hours | 48-65 hours | Some parallelization loss |
+| Sprint 2 | 18-25 hours | 35-46 hours | Stream A first (8-11h), then B (10-14h) |
+| Sprint 3 | 11-15 hours | 46-61 hours | Partial parallelization loss |
+| Sprint 4 | 4-6 hours | 50-67 hours | Some parallelization loss |
 
-**Total**: 48-65 hours across 6-8 days
+**Total**: 50-67 hours across 6-8 days
 
 ---
 
