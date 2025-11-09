@@ -1,0 +1,21 @@
+# LLM Caller CLI Module Dependencies
+
+# Note: Standard library modules (abc, asyncio, dataclasses, enum, json, logging,
+# os, pathlib, re, time, typing, uuid) are built into Python
+
+# HTTP client for async LLM API calls
+aiohttp>=3.8.0
+
+# Data validation
+pydantic>=2.0.0
+
+# YAML parsing
+pyyaml>=6.0
+
+# Environment management
+python-dotenv>=1.0.0
+
+# Development dependencies
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0

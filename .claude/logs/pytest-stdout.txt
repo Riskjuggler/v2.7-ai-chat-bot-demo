@@ -1,0 +1,121 @@
+
+==================================== ERRORS ====================================
+_________ ERROR collecting tests/llm_caller_cli/test_configuration.py __________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_configuration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_configuration.py:14: in <module>
+    from modules.llm_caller_cli.src.config.settings import (
+E   ModuleNotFoundError: No module named 'modules'
+________ ERROR collecting tests/llm_caller_cli/test_llm_integration.py _________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_llm_integration.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_llm_integration.py:9: in <module>
+    from modules.llm_caller_cli.src.core.llm_service import LLMService
+E   ModuleNotFoundError: No module named 'modules'
+__________ ERROR collecting tests/llm_caller_cli/test_llm_service.py ___________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_llm_service.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_llm_service.py:10: in <module>
+    from modules.llm_caller_cli.src.core.llm_service import LLMService, ProviderManager
+E   ModuleNotFoundError: No module named 'modules'
+_______ ERROR collecting tests/llm_caller_cli/test_lmstudio_provider.py ________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_lmstudio_provider.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_lmstudio_provider.py:7: in <module>
+    from modules.llm_caller_cli.src.providers.lmstudio_provider import LMStudioProvider
+E   ModuleNotFoundError: No module named 'modules'
+_______ ERROR collecting tests/llm_caller_cli/test_model_capabilities.py _______
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_model_capabilities.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_model_capabilities.py:9: in <module>
+    from modules.llm_caller_cli.src.config.model_capabilities import (
+E   ModuleNotFoundError: No module named 'modules'
+________ ERROR collecting tests/llm_caller_cli/test_provider_manager.py ________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_provider_manager.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_provider_manager.py:11: in <module>
+    from modules.llm_caller_cli.src.core.llm_service import ProviderManager
+E   ModuleNotFoundError: No module named 'modules'
+_________ ERROR collecting tests/llm_caller_cli/test_routing_engine.py _________
+ImportError while importing test module '/Users/user/v2.7-test/tests/llm_caller_cli/test_routing_engine.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.10/3.10.16/Frameworks/Python.framework/Versions/3.10/lib/python3.10/importlib/__init__.py:126: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+tests/llm_caller_cli/test_routing_engine.py:5: in <module>
+    from modules.llm_caller_cli.src.models.request_models import (
+E   ModuleNotFoundError: No module named 'modules'
+=============================== warnings summary ===============================
+tests/llm_caller_cli/test_cli_integration.py:412
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_cli_integration.py:412: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.slow
+
+tests/llm_caller_cli/test_production_scenarios.py:70
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:70: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:103
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:103: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:127
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:127: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:181
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:181: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:197
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:197: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:218
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:218: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:246
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:246: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:270
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:270: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:299
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:299: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.integration
+
+tests/llm_caller_cli/test_production_scenarios.py:300
+  /Users/user/v2.7-test/tests/llm_caller_cli/test_production_scenarios.py:300: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    @pytest.mark.slow
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/llm_caller_cli/test_configuration.py
+ERROR tests/llm_caller_cli/test_llm_integration.py
+ERROR tests/llm_caller_cli/test_llm_service.py
+ERROR tests/llm_caller_cli/test_lmstudio_provider.py
+ERROR tests/llm_caller_cli/test_model_capabilities.py
+ERROR tests/llm_caller_cli/test_provider_manager.py
+ERROR tests/llm_caller_cli/test_routing_engine.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 7 errors during collection !!!!!!!!!!!!!!!!!!!!
+11 warnings, 7 errors in 0.59s
