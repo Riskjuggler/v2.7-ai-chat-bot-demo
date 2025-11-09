@@ -39,7 +39,7 @@ describe('ApiClient', () => {
       fetchMock.mockResolvedValueOnce({
         ok: true,
         json: vi.fn().mockResolvedValueOnce(mockResponse),
-      } as any)
+      } as Response)
 
       const result = await apiClient.sendMessage({ message: 'Hello' })
 
@@ -64,12 +64,13 @@ describe('ApiClient', () => {
           error: 'Service unavailable',
           detail: 'LLM timeout',
         }),
-      } as any)
+      } as Response)
 
       try {
         await apiClient.sendMessage({ message: 'Hello' })
         throw new Error('Should have thrown')
-      } catch (error: any) {
+      } catch (error: unknown) {
+        if (!(error instanceof ApiError)) throw error
         expect(error).toBeInstanceOf(ApiError)
         expect(error.message).toBe('Service unavailable')
         expect(error.statusCode).toBe(503)
@@ -85,7 +86,7 @@ describe('ApiClient', () => {
         json: vi.fn().mockResolvedValueOnce({
           error: 'Internal server error',
         }),
-      } as any)
+      } as Response)
 
       // Second call succeeds
       const mockResponse: ChatResponse = {
@@ -96,7 +97,7 @@ describe('ApiClient', () => {
       fetchMock.mockResolvedValueOnce({
         ok: true,
         json: vi.fn().mockResolvedValueOnce(mockResponse),
-      } as any)
+      } as Response)
 
       const result = await apiClient.sendMessage({ message: 'Hello' })
 
@@ -112,7 +113,7 @@ describe('ApiClient', () => {
           error: 'Validation error',
           detail: 'Message too long',
         }),
-      } as any)
+      } as Response)
 
       await expect(apiClient.sendMessage({ message: 'x'.repeat(20000) })).rejects.toThrow(
         ApiError
@@ -136,7 +137,7 @@ describe('ApiClient', () => {
       fetchMock.mockResolvedValueOnce({
         ok: true,
         json: vi.fn().mockResolvedValueOnce(mockResponse),
-      } as any)
+      } as Response)
 
       const result = await apiClient.sendMessage({ message: 'Hello' })
 
@@ -172,7 +173,8 @@ describe('ApiClient', () => {
       try {
         await timeoutClient.sendMessage({ message: 'Hello' })
         throw new Error('Should have thrown timeout')
-      } catch (error: any) {
+      } catch (error: unknown) {
+        if (!(error instanceof ApiError)) throw error
         expect(error).toBeInstanceOf(ApiError)
         expect(error.message).toBe('Request timeout')
         expect(error.statusCode).toBe(408)
@@ -190,7 +192,7 @@ describe('ApiClient', () => {
       fetchMock.mockResolvedValueOnce({
         ok: true,
         json: vi.fn().mockResolvedValueOnce(mockResponse),
-      } as any)
+      } as Response)
 
       const result = await apiClient.checkHealth()
 
@@ -212,7 +214,7 @@ describe('ApiClient', () => {
       fetchMock.mockResolvedValueOnce({
         ok: true,
         json: vi.fn().mockResolvedValueOnce(mockResponse),
-      } as any)
+      } as Response)
 
       const result = await apiClient.checkHealth()
 
