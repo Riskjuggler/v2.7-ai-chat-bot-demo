@@ -40,4 +40,4 @@ ERROR tests/api/test_integration.py
 ERROR tests/api/test_middleware.py
 ERROR tests/api/test_routes.py
 !!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
-======================== 4 warnings, 3 errors in 0.61s =========================
+======================== 4 warnings, 3 errors in 0.62s =========================
