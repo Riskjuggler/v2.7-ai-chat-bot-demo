@@ -1,4 +1,5 @@
 import './App.css'
+import { ChatContainer } from './components/ChatContainer'
 
 function App() {
   return (
@@ -7,9 +8,7 @@ function App() {
         <h1>AI Chat Interface</h1>
       </header>
       <main>
-        <p className="placeholder-text">
-          Frontend scaffold ready. Chat components coming soon.
-        </p>
+        <ChatContainer />
       </main>
     </div>
   )

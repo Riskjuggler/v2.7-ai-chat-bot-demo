@@ -9,10 +9,10 @@ describe('App', () => {
     expect(heading).toBeInTheDocument()
   })
 
-  it('renders the placeholder text', () => {
+  it('renders the chat container', () => {
     render(<App />)
-    const placeholder = screen.getByText(/Frontend scaffold ready/i)
-    expect(placeholder).toBeInTheDocument()
+    const chatMessages = screen.getByLabelText('Chat messages')
+    expect(chatMessages).toBeInTheDocument()
   })
 
   it('mounts without errors', () => {
