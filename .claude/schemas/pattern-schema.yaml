@@ -1,0 +1,250 @@
+# Pattern Schema V1.0
+# This schema defines the structure for all pattern YAML files in the V2.7 Pattern Library
+
+schema_version: "1.0"
+description: "Schema for V2.7 Pattern Library - Cross-project learning patterns"
+
+# Required fields (must be present in every pattern)
+required_fields:
+  - pattern_id
+  - title
+  - version
+  - category
+  - domain
+  - confidence
+  - context
+  - what_worked
+  - what_didnt_work
+  - lessons
+  - implementation
+  - evidence
+  - usage
+  - maintenance
+
+# Field definitions
+fields:
+  pattern_id:
+    type: string
+    format: "CATEGORY-SUBJECT-###"
+    description: "Unique identifier for the pattern"
+    examples:
+      - "EDGE-CASE-TESTING-001"
+      - "WORK-UNIT-SIZING-001"
+      - "ERROR-HANDLING-RETRY-001"
+
+  title:
+    type: string
+    description: "Short descriptive title explaining the pattern"
+    max_length: 100
+    examples:
+      - "Comprehensive Edge Case Testing Prevents Production Bugs"
+      - "Keep Work Units to 1-5 Files for Manageable Scope"
+
+  version:
+    type: string
+    format: "semver (X.Y)"
+    description: "Pattern version for tracking updates"
+    examples:
+      - "1.0"
+      - "1.2"
+
+  category:
+    type: string
+    description: "Primary category for pattern organization"
+    allowed_values:
+      - testing
+      - architecture
+      - security
+      - performance
+      - process
+      - quality
+      - documentation
+      - error-handling
+      - validation
+      - deployment
+
+  domain:
+    type: list
+    description: "Domains where this pattern applies"
+    allowed_values:
+      - web-app
+      - api
+      - cli-tool
+      - data-pipeline
+      - user-input
+      - workflow-automation
+      - testing-framework
+      - universal  # Applies to all domains
+
+  tech_agnostic:
+    type: boolean
+    description: "Whether pattern applies regardless of technology stack"
+    default: true
+
+  confidence:
+    type: string
+    description: "Confidence level based on evidence count"
+    allowed_values:
+      - HIGH
+      - MEDIUM
+      - LOW
+      - EXPERIMENTAL
+    thresholds:
+      HIGH: "5+ evidence sources from 3+ different work units"
+      MEDIUM: "3-4 evidence sources from 2+ work units"
+      LOW: "2 evidence sources or single work unit"
+      EXPERIMENTAL: "1 evidence source, needs validation"
+
+  context:
+    type: object
+    description: "When this pattern applies or doesn't apply"
+    required_subfields:
+      - applies_when
+      - doesnt_apply_when
+    structure:
+      applies_when:
+        type: list
+        description: "Conditions where pattern is applicable"
+      doesnt_apply_when:
+        type: list
+        description: "Conditions where pattern should not be used"
+
+  what_worked:
+    type: list
+    description: "Successful implementations with evidence"
+    structure:
+      - description: string
+        evidence:
+          type: list
+          structure:
+            - project: string
+              impact: string
+              work_unit: string
+        success_rate: string (optional)
+
+  what_didnt_work:
+    type: list
+    description: "Failed approaches with lessons"
+    structure:
+      - description: string
+        problem: string
+        solution: string
+
+  lessons:
+    type: list
+    description: "Actionable takeaways from evidence"
+    item_format: string
+
+  anti_patterns:
+    type: list
+    description: "Common mistakes to avoid"
+    structure:
+      - name: string
+        why_bad: string
+        evidence: string
+
+  implementation:
+    type: object
+    description: "Practical implementation guidance"
+    structure:
+      libraries:
+        type: list
+        description: "Recommended libraries/tools"
+      test_categories:
+        type: list
+        description: "Testing categories to cover"
+      coverage_target:
+        type: list
+        description: "Coverage expectations"
+
+  evidence:
+    type: object
+    description: "Evidence supporting this pattern"
+    required_subfields:
+      - projects
+      - validation
+      - metrics
+    structure:
+      projects:
+        type: list
+        structure:
+          - name: string
+            work_unit: string
+            impact: string
+            time: string
+            confidence_contribution: string  # LOW/MEDIUM/HIGH
+      validation:
+        type: list
+        description: "How pattern was validated"
+      metrics:
+        type: object
+        structure:
+          time_investment: string
+          time_saved: string
+          roi: string
+          bugs_prevented: number
+
+  related_patterns:
+    type: list
+    description: "Related pattern IDs"
+    item_format: "PATTERN-ID-###"
+
+  usage:
+    type: object
+    description: "Pattern usage tracking"
+    structure:
+      suggested: number  # Times pattern suggested
+      applied: number    # Times pattern applied
+      helpful: number    # Times pattern was helpful
+      neutral: number    # Times pattern was neutral
+      harmful: number    # Times pattern caused issues
+      last_applied: date
+      created: date
+      updated: date
+
+  maintenance:
+    type: object
+    description: "Pattern maintenance metadata"
+    required_subfields:
+      - status
+      - next_review
+    structure:
+      status:
+        type: string
+        allowed_values:
+          - ACTIVE
+          - DEPRECATED
+          - EXPERIMENTAL
+      next_review: date
+      deprecation_reason: string (nullable)
+
+# Validation rules
+validation_rules:
+  - rule: "confidence must match evidence count"
+    check: |
+      HIGH requires evidence.projects.length >= 5 with 3+ unique work units
+      MEDIUM requires evidence.projects.length >= 3 with 2+ unique work units
+      LOW requires evidence.projects.length >= 2
+      EXPERIMENTAL requires evidence.projects.length >= 1
+
+  - rule: "pattern_id must match format"
+    check: |
+      Must be uppercase with format: CATEGORY-SUBJECT-###
+      Category should relate to 'category' field
+
+  - rule: "domain must include at least one value"
+    check: |
+      domain list cannot be empty
+
+  - rule: "version must be valid semver"
+    check: |
+      Must match X.Y format where X and Y are numbers
+
+# Optional fields (recommended but not required)
+optional_fields:
+  - tech_agnostic
+  - anti_patterns
+  - related_patterns
+
+# Example validation script usage:
+# python3 .claude/scripts/validate_pattern.py --pattern PATTERN-001.yaml --schema pattern-schema.yaml

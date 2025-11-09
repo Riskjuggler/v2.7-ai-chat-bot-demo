@@ -1,0 +1,29 @@
+{
+  "last_updated": "2025-11-09T12:00:00",
+  "current_work_unit": {
+    "id": null,
+    "title": "No active work unit",
+    "status": "NONE",
+    "objective": "",
+    "created": null,
+    "files_expected": 0
+  },
+  "agent_reviews": {
+    "count": 0,
+    "required": 7,
+    "p0_total": 0,
+    "p1_total": 0,
+    "p2_total": 0,
+    "reviews": []
+  },
+  "git": {
+    "branch": "main",
+    "last_commit": null
+  },
+  "pattern_library": {
+    "active": true,
+    "location": "~/.claude/patterns/",
+    "query_command": "python3 .claude/scripts/pattern_query.py"
+  },
+  "workflow_version": "v2.7.2"
+}
