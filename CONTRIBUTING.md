@@ -44,8 +44,8 @@ Enhancement suggestions are welcome! Please provide:
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/ai-chat-interface.git
-cd ai-chat-interface
+git clone https://github.com/YOUR_USERNAME/v2.7-ai-chat-bot-demo.git
+cd v2.7-ai-chat-bot-demo
 
 # Set up backend
 python3 -m venv venv

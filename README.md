@@ -23,8 +23,8 @@ Get up and running in less than 5 minutes:
 
 1. **Clone and setup**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/ai-chat-interface.git
-   cd ai-chat-interface
+   git clone https://github.com/RiskJuggler/v2.7-ai-chat-bot-demo.git
+   cd v2.7-ai-chat-bot-demo
    ```
 
 2. **Configure API keys**:
@@ -498,13 +498,13 @@ This repository includes several important files for open source collaboration:
 ### Using the Templates
 
 **To report a bug:**
-1. Go to [GitHub Issues](https://github.com/YOUR_USERNAME/ai-chat-interface/issues/new/choose)
+1. Go to [GitHub Issues](https://github.com/RiskJuggler/v2.7-ai-chat-bot-demo/issues/new/choose)
 2. Select "Bug report" template
 3. Fill in all requested information
 4. Include logs and steps to reproduce
 
 **To request a feature:**
-1. Go to [GitHub Issues](https://github.com/YOUR_USERNAME/ai-chat-interface/issues/new/choose)
+1. Go to [GitHub Issues](https://github.com/RiskJuggler/v2.7-ai-chat-bot-demo/issues/new/choose)
 2. Select "Feature request" template
 3. Describe the use case and proposed solution
 

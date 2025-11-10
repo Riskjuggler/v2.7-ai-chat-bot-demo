@@ -15,7 +15,7 @@ We take the security of AI Chat Web Interface seriously. If you believe you have
 **Please do not report security vulnerabilities through public GitHub issues.**
 
 Instead, please report them via:
-- Opening a GitHub Security Advisory at https://github.com/YOUR_USERNAME/ai-chat-interface/security/advisories/new
+- Opening a GitHub Security Advisory at https://github.com/YOUR_USERNAME/v2.7-ai-chat-bot-demo/security/advisories/new
 - Or by sending an email to (security contact email)
 
 Please include the following information in your report:
