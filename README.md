@@ -1,5 +1,11 @@
 # AI Chat Web Interface
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
+[![Node.js 18+](https://img.shields.io/badge/node-18+-green.svg)](https://nodejs.org/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 A modern, production-ready web application for conversing with AI language models. Features a clean React frontend and FastAPI backend with support for multiple LLM providers (OpenAI, Anthropic, and local models via LM Studio).
 
 ## Features
@@ -17,8 +23,8 @@ Get up and running in less than 5 minutes:
 
 1. **Clone and setup**:
    ```bash
-   git clone <repository-url>
-   cd v2.7-test
+   git clone https://github.com/YOUR_USERNAME/ai-chat-interface.git
+   cd ai-chat-interface
    ```
 
 2. **Configure API keys**:
@@ -426,24 +432,94 @@ See [Performance Results](PERFORMANCE_RESULTS.md) for benchmark data.
 
 ## Contributing
 
-Contributions are welcome! Please:
+Contributions are welcome! We love your input, whether it's:
+
+- Reporting a bug
+- Discussing the current state of the code
+- Submitting a fix
+- Proposing new features
+- Becoming a maintainer
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+### Quick Contribution Guide
 
 1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes with tests
+4. Ensure all tests pass (`pytest tests/` and `npm test`)
+5. Commit your changes (`git commit -m 'feat: add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
 
 ## License
 
-[Add license information here]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This means you can use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software, as long as you include the original copyright notice and license in any substantial portions of the software.
+
+## Repository Files
+
+This repository includes several important files for open source collaboration:
+
+### Community & Contribution Files
+
+- **[LICENSE](LICENSE)** - MIT License allowing free use, modification, and distribution
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Comprehensive guide for contributing:
+  - Development setup and workflow
+  - Code style guidelines (Black for Python, ESLint for TypeScript)
+  - Testing requirements and standards
+  - Commit message conventions
+  - Pull request process
+- **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** - Community standards (Contributor Covenant)
+  - Expected behavior and community values
+  - Enforcement guidelines
+  - Reporting process for violations
+
+### Security Files
+
+- **[SECURITY.md](SECURITY.md)** - Security policy:
+  - How to report security vulnerabilities (please report privately!)
+  - Response timeline expectations
+  - Security best practices for deployment
+- **[SECURITY_AUDIT.md](SECURITY_AUDIT.md)** - Complete security audit results
+
+### GitHub Templates (`.github/`)
+
+- **Bug Report Template** - Use when reporting bugs via GitHub Issues
+  - Includes structured format for reproducible bug reports
+  - Environment details, steps to reproduce, logs
+- **Feature Request Template** - Use when suggesting new features
+  - Use case description, proposed solution, alternatives
+- **Pull Request Template** - Automatically used when creating PRs
+  - Checklist for code quality, tests, documentation
+  - Change description format
+
+### Using the Templates
+
+**To report a bug:**
+1. Go to [GitHub Issues](https://github.com/YOUR_USERNAME/ai-chat-interface/issues/new/choose)
+2. Select "Bug report" template
+3. Fill in all requested information
+4. Include logs and steps to reproduce
+
+**To request a feature:**
+1. Go to [GitHub Issues](https://github.com/YOUR_USERNAME/ai-chat-interface/issues/new/choose)
+2. Select "Feature request" template
+3. Describe the use case and proposed solution
+
+**To contribute code:**
+1. Read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines
+2. Create a feature branch
+3. Make changes with tests
+4. Submit a PR (template will auto-populate)
 
 ## Support
 
 For issues and questions:
 - Check [Troubleshooting](#troubleshooting) section
 - Review [documentation](docs/)
-- Open an issue on GitHub
+- Open an issue on GitHub using the appropriate template
 
 ## Acknowledgments
 
