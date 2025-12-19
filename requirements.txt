@@ -4,7 +4,7 @@
 # os, pathlib, re, time, typing, uuid) are built into Python
 
 # HTTP client for async LLM API calls
-aiohttp>=3.8.0
+aiohttp>=3.9.0
 
 # Data validation
 pydantic>=2.0.0
@@ -24,3 +24,4 @@ pytest>=7.4.0
 pytest-asyncio>=0.21.0
 pytest-cov>=4.0.0
 httpx>=0.25.0  # For TestClient
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
